@@ -4,6 +4,7 @@ require("dotenv").config();
 const userRoutes = require("./routes/userRouter.js");
 
 const app = express();
+app.use(express.json());
 const port = process.env.PORT || 9000;
 
 //router
