@@ -1,16 +1,5 @@
 const mongoose = require("mongoose");
 
-// "admins": [
-//     "Juan Pérez",
-//     "María Rodríguez"
-//   ],
-//   "createdAt": "2022-01-01",
-//   "id": 1,
-//   "nombre": "Consejo Académico",
-//   "updatedAt": "2022-03-15"
-// },
-
-
 const authoritySchema = new mongoose.Schema({
     name: {
         type : String,
