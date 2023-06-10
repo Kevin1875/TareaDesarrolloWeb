@@ -9,7 +9,7 @@ router
 
 router
   .route("/:id")
-  .get(authorityController.createAuthority)
+  .get(authorityController.getAuthority)
   .patch(authorityController.updateAuthority)
   .delete(authorityController.deleteAuthority);
 
