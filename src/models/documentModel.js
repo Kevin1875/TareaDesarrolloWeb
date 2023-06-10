@@ -22,7 +22,7 @@ const documentSchema = new mongoose.Schema({
         require: true
     },
 
-    put_date: {
+    pub_date: {
         type : Date,
         require: true
     },

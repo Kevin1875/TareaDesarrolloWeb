@@ -11,12 +11,12 @@ const authoritySchema = new mongoose.Schema({
         require: true
     },
 
-    updated_Date: {
+    updated_date: {
         type : Date,
         require: true
     },
 
-    creation_Date: {
+    creation_date: {
         type : Date,
         require: true
     },

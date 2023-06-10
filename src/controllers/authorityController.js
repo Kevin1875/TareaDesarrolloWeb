@@ -32,7 +32,7 @@ exports.getAuthority = async (req, res) => {
     console.error(error);
     res.status(407).json({
       status: "fail",
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -40,13 +40,24 @@ exports.getAuthority = async (req, res) => {
 //CREAR autoridad
 exports.createAuthority = async (req, res) => {
   try {
-    const newAuthority = await Authority.create(req.body);
-    console.log(newAuthority.name);
+    // Convertir las cadenas de fecha a objetos Date
+    const updated_date = new Date();
+    const creation_date = new Date();
+    console.log(updated_date);
+    // Crear el nuevo documento con las fechas convertidas
+    const newAuthority = await Authority.create({
+      name: req.body.name,
+      admins: req.body.admins,
+      updated_date: updated_date,
+      creation_date: creation_date
+    });
+
     res.status(201).json({
       status: "ok",
       new_Authority: newAuthority,
     });
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       status: "fail",
       message: error,
@@ -85,7 +96,7 @@ exports.deleteAuthority = async (req, res) => {
     const deletedAuthority = await Authority.findByIdAndDelete(req.params.id);
     res.status(201).json({
       status: "success",
-      document_deleted: { authority },
+      authority_deleted: { authority },
     });
   } catch (error) {
     res.status(400).json({

@@ -40,8 +40,22 @@ exports.getDocument = async (req, res) => {
 //CREAR usuario
 exports.createDocument = async (req, res) => {
   try {
-    const newDocument = await Document.create(req.body);
-    console.log(newDocument.name);
+    // Convertir las cadenas de fecha a objetos Date
+    const pubDate = new Date(req.body.pub_date);
+    const expDate = new Date(req.body.exp_date);
+    const valDate = new Date(req.body.val_date);
+
+    // Crear el nuevo documento con las fechas convertidas
+    const newDocument = await Document.create({
+      type: req.body.type,
+      title: req.body.title,
+      authorities: req.body.authorities,
+      key_words: req.body.key_words,
+      pub_date: pubDate,
+      exp_date: expDate,
+      val_date: valDate,
+      body: req.body.body,
+    });
     res.status(201).json({
       status: "ok",
       newUser: newDocument,
